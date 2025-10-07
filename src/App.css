@@ -16,7 +16,6 @@
   padding: 0;
 }
 
-/* --- Cambios aquí para centrar en Desktop --- */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--background-color);
@@ -90,36 +89,45 @@ header h1 {
   justify-content: center;
 }
 
+/* --- CAMBIO: Añadimos overflow-x: auto para permitir el scroll si es necesario --- */
 .resistor-visual {
   width: 100%;
   max-width: 400px;
   margin-bottom: 2rem;
+  overflow-x: auto; /* Permite scroll horizontal si la resistencia es muy ancha */
+  padding: 0 50px; /* Añade padding para que las terminales quepan dentro visualmente */
+  box-sizing: content-box; /* Asegura que el padding no afecte el max-width */
 }
 
 .resistor-body {
   height: 60px;
-  background-color: #f3dcb8;
+  background-color: #f3dcb8; /* Color crema del cuerpo de la resistencia */
   border: 2px solid #d3b88b;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 40px;
+  /* CAMBIO: padding 0, ya que el visual contenedor manejará el espacio */
+  padding: 0 40px; 
   position: relative;
+  /* CAMBIO: Mínimo ancho para que la resistencia no se comprima demasiado */
+  min-width: 250px; 
 }
 
 .resistor-body::before, .resistor-body::after {
   content: '';
   position: absolute;
-  background-color: #b0b0b0;
+  background-color: #b0b0b0; /* Color de las terminales */
   height: 4px;
-  width: 50px;
+  width: 50px; /* Ancho por defecto de las terminales */
   top: 50%;
   transform: translateY(-50%);
 }
 
-.resistor-body::before { left: -50px; }
-.resistor-body::after { right: -50px; }
+/* Ajusta estas propiedades para que queden dentro del padding del .resistor-visual */
+.resistor-body::before { left: 0px; transform: translateX(-100%) translateY(-50%); } 
+.resistor-body::after { right: 0px; transform: translateX(100%) translateY(-50%); } 
+
 
 .band {
   width: 12px;
@@ -163,14 +171,14 @@ header h1 {
 
 /* --- Media Queries para Diseño Responsivo --- */
 @media (max-width: 768px) {
-  /* --- Cambio aquí para ajustar en mobile --- */
   body {
-    display: block; /* Vuelve al comportamiento normal */
+    display: block;
     min-height: auto;
   }
 
   header h1 {
     font-size: 2rem;
+    padding: 0 1rem; /* Añadir padding para que no se pegue a los bordes */
   }
   
   .calculator-container {
@@ -180,4 +188,14 @@ header h1 {
   .results {
     margin-top: 2rem;
   }
+
+  /* --- CAMBIO: Ajustar terminales en móvil --- */
+  .resistor-visual {
+    padding: 0 20px; /* Menos padding para terminales más cortas */
+  }
+
+  .resistor-body::before, .resistor-body::after {
+    width: 20px; /* Terminales más cortas */
+  }
+
 }

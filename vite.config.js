@@ -14,6 +14,7 @@ export default defineConfig({
       pwaAssets: {
         disabled: false,
         config: true,
+        image: "public/maskable_icon.png",
       },
 
       manifest: {
