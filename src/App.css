@@ -1,0 +1,183 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --background-color: #f0f2f5;
+  --card-background: #ffffff;
+  --text-color: #333;
+  --primary-color: #007bff;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Cambios aquí para centrar en Desktop --- */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.calculator-container {
+  display: flex;
+  gap: 2rem;
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.selector-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.selector-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.selector-group select {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  color: black;
+  appearance: none;
+}
+
+.results {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.resistor-visual {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.resistor-body {
+  height: 60px;
+  background-color: #f3dcb8;
+  border: 2px solid #d3b88b;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 40px;
+  position: relative;
+}
+
+.resistor-body::before, .resistor-body::after {
+  content: '';
+  position: absolute;
+  background-color: #b0b0b0;
+  height: 4px;
+  width: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.resistor-body::before { left: -50px; }
+.resistor-body::after { right: -50px; }
+
+.band {
+  width: 12px;
+  height: 100%;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.tolerance {
+  margin-left: 20px;
+}
+
+.result-text {
+  text-align: center;
+}
+
+.result-text h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.final-value {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.info-section {
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.color-chart-img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+/* --- Media Queries para Diseño Responsivo --- */
+@media (max-width: 768px) {
+  /* --- Cambio aquí para ajustar en mobile --- */
+  body {
+    display: block; /* Vuelve al comportamiento normal */
+    min-height: auto;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .calculator-container {
+    flex-direction: column;
+  }
+  
+  .results {
+    margin-top: 2rem;
+  }
+}
